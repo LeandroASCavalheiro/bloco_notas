@@ -5,12 +5,15 @@ from datetime import date
 from controller.notas_DAO import DataBase
 from model.notas import Notas
 
+from infra.configs.connection import DBConnectionHandler
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        self.setMinimumSize(400, 200)
+        conn = DBConnectionHandler
+        conn.create_database()
+        self.setMinimumSize(520, 500)
 
         self.setWindowTitle('BLOCO DE NOTAS ')
 
@@ -176,4 +179,3 @@ class MainWindow(QMainWindow):
         self.btn_remover.setVisible(True)
         self.lbl_id.setVisible(True)
         self.txt_id.setVisible(True)
-
